@@ -77,24 +77,16 @@
                             'gananciaML'            =>  $gananciaML,
                             'gastos_envio_vendedror' =>  $this->gastoEnvioVendedor(),
                             'precio_original'        =>  $precio_original,
-                             //'imagenesItem'           =>  $imagenes
-                            // //quiero listar todo lo q tiene imagenes aca.. 
-                            // //imagenes me trae un array como el q necesito
-                            // $url = $imagen[valor de tu indice];
-                            // $id = $imagen [valor de tu indice];
-                            // $size = $imagen [valor de tu indice] 
+                            
                         ]; 
                         
-                        $resultado=array_merge($producto,$imagenes);
+                        $resultado=array_merge($producto,$imagenes);//hago merge de dos array
                         
                         array_push($productos, $resultado);
                         
                     endforeach;
 
-                         
-                         $this->datos_productos = $productos;
-                    
-                    
+                    $this->datos_productos = $productos;
                 }
 
                 private function devolverItem($item,$precio_original){//devuelve el item de un producto
@@ -115,7 +107,7 @@
 
                 }
 
-                public function devolverImagen($imagen){//devuelve las imagenes de cada publicacion
+                private function devolverImagen($imagen){//devuelve las imagenes de cada publicacion
                     $json = file_get_contents('https://api.mercadolibre.com/items/'.$imagen);
                     
                     $data = json_decode($json);
@@ -148,29 +140,6 @@
                         endforeach;
                     endforeach;
                     return $imagen_datos;
-                    // foreach($imagenes as $imagen){
-                        
-                    //     //$id = datanueva [  ' id ' ] = $id; 
-                    //     //datanueva [  ' id ' ] => $url; datanueva [  ' url' ] => $url; 
-                    //     //$i d= $imagen->id;
-                    //     $url = $imagen->url;
-                    //     $id = $imagen->id;
-                    //     $secure_url = $imagen->secure_url;
-                    //     // proceso de url http:\/\/mla-s2-p.mlstatic.com\/823153-MLA42033392380_062020-O.jpg
-                        
-                    //     $exploded_url = explode("/",$url);
-                    //     $url_completa = $exploded_url[0].'//'.$exploded_url[2].'/'.$exploded_url[3];
-                    //     //$image_url[]=$url_completa;
-                    //     array_push($image_url,$id);
-                    //     array_push($image_url,$url_completa);
-                    //     array_push($image_url,$secure_url);
-                    // }
-
-                    // return $image_url;
-                    
-
-                    
-
                 }
 
                 private function gastoEnvioVendedor(){
